@@ -1,0 +1,14 @@
+setup:
+  addons:
+    - plan: 'heroku-postgresql:hobby-dev'
+      as: DATABASE
+  config:
+    BUILD_WITH_GEO_LIBRARIES: '1'
+    DISABLE_COLLECTSTATIC: '1'
+build:
+  packages:
+    - gdal-bin
+  languages:
+    - python
+run:
+  web: gunicorn nyc_accessible_restaurant_advisor.wsgi
